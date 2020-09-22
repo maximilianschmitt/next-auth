@@ -1,0 +1,51 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+		Helvetica Neue, sans-serif;
+}
+
+a {
+	color: darkviolet;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	text-align: center;
+	background: #efefef;
+}
+
+.Homepage {
+	padding: 2rem;
+	text-align: left;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.login-form {
+	display: block;
+	text-align: left;
+	background: white;
+	padding: 1rem;
+	border: 1px solid #ccc;
+}
+
+.login-form label {
+	display: block;
+}
+.login-form label > span {
+	display: block;
+}
+
+.login-form label > span + input {
+	margin-top: 0.5rem;
+}
+
+.login-form > * + * {
+	margin-top: 1rem;
+}
