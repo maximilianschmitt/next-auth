@@ -2,15 +2,12 @@ import httpProxy from 'http-proxy'
 import Cookies from 'cookies'
 import url from 'url'
 
-// Get the actual API_URL as an environment variable. For real
-// applications, you might want to get it from 'next/config' instead.
-const API_URL = process.env.API_URL
-
 const proxy = httpProxy.createProxyServer()
 
 export const config = {
 	api: {
 		bodyParser: false,
+		url: 'http://localhost:3000/api'
 	},
 }
 
@@ -63,7 +60,7 @@ export default (req, res) => {
 			})
 			.once('error', reject)
 			.web(req, res, {
-				target: API_URL,
+				target: config.api.url,
 				autoRewrite: false,
 				selfHandleResponse: isLogin,
 			})
