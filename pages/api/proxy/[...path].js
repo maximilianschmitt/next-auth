@@ -7,7 +7,6 @@ const proxy = httpProxy.createProxyServer()
 export const config = {
 	api: {
 		bodyParser: false,
-		url: 'http://localhost:3000/api'
 	},
 }
 
@@ -60,7 +59,7 @@ export default (req, res) => {
 			})
 			.once('error', reject)
 			.web(req, res, {
-				target: config.api.url,
+				target: process.env.API_URL,
 				autoRewrite: false,
 				selfHandleResponse: isLogin,
 			})

@@ -3,13 +3,14 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "cross-env API_URL=http://localhost:3000/api next dev",
 		"build": "next build",
 		"start": "next start"
 	},
 	"dependencies": {
 		"axios": "^0.20.0",
 		"cookies": "^0.8.0",
+		"cross-env": "^7.0.3",
 		"http-proxy": "^1.18.1",
 		"next": "9.5.3",
 		"react": "16.13.1",

@@ -5,7 +5,6 @@
  */
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { config } from './api/proxy/[...path]'
 
 // The following getInitialProps function demonstrates how to make
 // API requests from the server. We basically take the auth-token cookie
@@ -21,7 +20,7 @@ async function getInitialProps({ req, res }) {
 			const authToken = cookies.get('auth-token') || ''
 
 			const { email } = await axios
-				.get(`${config.api.url}/me`, { headers: { 'auth-token': authToken } })
+				.get(`${process.env.API_URL}/me`, { headers: { 'auth-token': authToken } })
 				.then((response) => response.data)
 
 			return { initialLoginStatus: `Logged in as ${email}` }
