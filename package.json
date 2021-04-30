@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "API_URL=http://localhost:3000/api next dev",
+		"dev": "cross-env API_URL=http://localhost:3000/api next dev",
 		"build": "next build",
 		"start": "next start"
 	},
@@ -14,5 +14,8 @@
 		"next": "9.5.3",
 		"react": "16.13.1",
 		"react-dom": "16.13.1"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3"
 	}
 }
