@@ -1,16 +1,14 @@
-function getInitialProps({ req, res }) {
-	if (!process.browser) {
-		const Cookies = require('cookies')
-		const cookies = new Cookies(req, res)
+export function getServerSideProps({ req, res }) {
+	const Cookies = require('cookies')
+	const cookies = new Cookies(req, res)
 
-		// Delete the cookie by not setting a value
-		cookies.set('auth-token')
+	// Delete the cookie by not setting a value
+	cookies.set('auth-token')
 
-		res.writeHead(307, { Location: '/' })
-		res.end()
-	} else {
-		return {}
-	}
+	res.writeHead(307, { Location: '/' })
+	res.end()
+
+	return { props: {} }
 }
 
 function Logout() {
@@ -20,7 +18,5 @@ function Logout() {
 		</div>
 	)
 }
-
-Logout.getInitialProps = getInitialProps
 
 export default Logout

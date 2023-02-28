@@ -43,7 +43,7 @@ A demo API endpoint for getting the currently authenticated user.
 
 ### pages/index.js
 
-The demo login page. Makes client-side AJAX requests to the API Proxy as well as server-side requests to the API in `getInitialProps()`.
+The demo login page. Makes client-side AJAX requests to the API Proxy as well as server-side requests to the API in `getServerSideProps()`.
 
 Client-side requests are made to `/api/proxy/*`. Server-side requests are made to `/api/*`.
 

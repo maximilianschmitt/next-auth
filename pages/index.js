@@ -10,30 +10,23 @@ import { useEffect, useState } from 'react'
 // applications, you might want to get it from 'next/config' instead.
 const API_URL = process.env.API_URL
 
-// The following getInitialProps function demonstrates how to make
+// The following getServerSideProps function demonstrates how to make
 // API requests from the server. We basically take the auth-token cookie
 // and from it create an HTTP header, just like the API Proxy does.
-// For real applications you might want to create reusable function that returns
-// a correctly configured axios instance depending on whether it gets called
-// from the server or from the browser.
-async function getInitialProps({ req, res }) {
-	if (!process.browser) {
-		try {
-			const Cookies = require('cookies')
-			const cookies = new Cookies(req, res)
-			const authToken = cookies.get('auth-token') || ''
+export async function getServerSideProps({ req, res }) {
+	try {
+		const Cookies = require('cookies')
+		const cookies = new Cookies(req, res)
+		const authToken = cookies.get('auth-token') || ''
 
-			const { email } = await axios
-				.get(`${API_URL}/me`, { headers: { 'auth-token': authToken } })
-				.then((response) => response.data)
+		const { email } = await axios
+			.get(`${API_URL}/me`, { headers: { 'auth-token': authToken } })
+			.then((response) => response.data)
 
-			return { initialLoginStatus: `Logged in as ${email}` }
-		} catch (err) {
-			return { initialLoginStatus: 'Not logged in' }
-		}
+		return { props: { initialLoginStatus: `Logged in as ${email}` } }
+	} catch (err) {
+		return { props: { initialLoginStatus: 'Not logged in' } }
 	}
-
-	return {}
 }
 
 export default function Homepage({ initialLoginStatus }) {
@@ -111,5 +104,3 @@ export default function Homepage({ initialLoginStatus }) {
 		</>
 	)
 }
-
-Homepage.getInitialProps = getInitialProps
