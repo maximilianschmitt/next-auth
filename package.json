@@ -11,9 +11,9 @@
 		"axios": "^0.20.0",
 		"cookies": "^0.8.0",
 		"http-proxy": "^1.18.1",
-		"next": "9.5.3",
-		"react": "16.13.1",
-		"react-dom": "16.13.1"
+		"next": "^13.2.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
 		"cross-env": "^7.0.3"
